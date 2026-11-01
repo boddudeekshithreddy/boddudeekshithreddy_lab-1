@@ -1,24 +1,22 @@
-
-# BDF Lab 01 - Node.js and Express Server
+# Lab 01: Node.js and Express Server
 
 ## Student Information
 
-| Details | Information |
+| Field | Details |
 |---|---|
 | Student Name | Boddu Deekshith Reddy |
 | Section | CSE-AIDE (2A) |
 | Subject | Backend Development Fundamentals |
 | Lab Number | 01 |
 | Lab Title | Node.js and Express Server |
-| Programming Language | JavaScript |
 
 ---
 
 ## 1. Objective
 
-To set up a Node.js project and develop a web server using the built-in HTTP module and Express.js framework.
+To set up a Node.js project and build a web server using the built-in HTTP module and Express.js framework.
 
-The experiment demonstrates server creation, HTTP request handling, routing, JSON responses, date and time generation, and 404 error handling.
+The objective is to understand server creation, HTTP request and response handling, routing, JSON responses, current date and time generation, and 404 error handling.
 
 ## 2. Technologies Used
 
@@ -34,10 +32,9 @@ The experiment demonstrates server creation, HTTP request handling, routing, JSO
 ```text
 Lab-1/
 │
-├── node_modules/
-│
 ├── screenshots/
 │   ├── node-server.png
+│   ├── express-server.png
 │   ├── home.png
 │   ├── about.png
 │   ├── time.png
@@ -53,6 +50,12 @@ Lab-1/
 
 ## 4. Installation and Setup
 
+### Prerequisites
+
+- Node.js installed
+- NPM installed
+- Visual Studio Code
+
 ### Step 1: Initialize the project
 
 ```bash
@@ -65,7 +68,7 @@ npm init -y
 npm install express
 ```
 
-### Step 3: Verify Node.js and NPM
+### Step 3: Verify installation
 
 ```bash
 node -v
@@ -74,23 +77,23 @@ npm -v
 
 ## 5. Implementation
 
-### A. Basic Node.js HTTP Server
+### A. Node.js HTTP Server
 
-File: `plain-server.js`
+**File:** `plain-server.js`
 
-The built-in HTTP module is used to create a basic web server that responds with the text "Hello".
+Created a basic HTTP server using Node.js's built-in HTTP module.
 
-Run the server:
+**Command to run:**
 
 ```bash
 npm run start:http
 ```
 
-Server URL:
+**Server URL:**
 
-http://localhost:3000
+https://boddudeekshithreddy-lab-1.onrender.com
 
-Expected Output:
+**Expected output:**
 
 ```text
 Hello
@@ -98,44 +101,60 @@ Hello
 
 ### B. Express.js Server
 
-File: `app.js`
+**File:** `app.js`
 
-Express.js is used to create a web server with three GET routes.
+Created an Express.js application to handle HTTP GET requests and return appropriate responses.
 
-Run the server:
+**Command to run:**
 
 ```bash
 npm start
 ```
 
-Server URL:
+**Server URL:**
 
-http://localhost:3000
+https://boddudeekshithreddy-lab-1.onrender.com
 
-## 6. Express Routes
+## 6. API Endpoints
 
-| HTTP Method | Endpoint | Description | Status |
+| HTTP Method | Endpoint | Description | Status Code |
 |---|---|---|---|
 | GET | `/` | Displays welcome message | 200 |
-| GET | `/about` | Displays student information in JSON | 200 |
-| GET | `/time` | Displays current date and time | 200 |
+| GET | `/about` | Returns student name and section in JSON | 200 |
+| GET | `/time` | Returns current date and time | 200 |
 | GET | `/unknown` | Handles unknown routes | 404 |
 
-### Route 1: Home
+## 7. Output Screenshots
 
-URL: `http://localhost:3000/`
+### 7.1 Node.js HTTP Server
 
-Expected Response:
+The basic Node.js server successfully responds with the Hello message.
+
+![Node.js HTTP Server](screenshot/landing_page.png)
+
+### 7.2 Express Server
+
+The Express server starts successfully and listens on port 3000.
+
+![Express Server](screenshot/landing_page.png)
+
+### 7.3 Home Route
+
+**URL:** `https://boddudeekshithreddy-lab-1.onrender.com`
+
+**Expected response:**
 
 ```text
 Welcome to my Express server!
 ```
 
-### Route 2: About
+![Home Route](screenshot/landing_page.png)
 
-URL: `http://localhost:3000/about`
+### 7.4 About Route
 
-Expected Response:
+**URL:** `https://boddudeekshithreddy-lab-1.onrender.com/about`
+
+**Expected response:**
 
 ```json
 {
@@ -144,11 +163,13 @@ Expected Response:
 }
 ```
 
-### Route 3: Time
+![About Route](screenshot/about.png)
 
-URL: `http://localhost:3000/time`
+### 7.5 Time Route
 
-Expected Response:
+**URL:** `https://boddudeekshithreddy-lab-1.onrender.com/time`
+
+**Expected response:**
 
 ```json
 {
@@ -156,62 +177,56 @@ Expected Response:
 }
 ```
 
-The actual date and time are generated dynamically using JavaScript's `new Date()` method.
+The current date and time are generated dynamically using JavaScript's `new Date()` method.
 
-### Route 4: 404 Error Handling
+![Time Route](screenshot/time.png)
 
-URL: `http://localhost:3000/unknown`
+### 7.6 404 Error Handling
 
-Expected Response:
+**URL:** `https://boddudeekshithreddy-lab-1.onrender.com/unknown`
+
+**Expected response:**
 
 ```text
 404 - Page Not Found
 ```
 
-## 7. Screenshots and Outputs
+![404 Error Handling](screenshot/unknown.png)
 
-The following screenshots demonstrate the successful execution of the lab.
+## 8. Concepts Learned
 
-### Node.js HTTP Server
+1. Creating a Node.js project using NPM.
+2. Understanding `package.json` and `node_modules`.
+3. Installing Express.js.
+4. Creating an HTTP server using `http.createServer()`.
+5. Creating an Express application using `express()`.
+6. Handling HTTP requests and responses.
+7. Implementing GET routes using `app.get()`.
+8. Sending JSON responses using `res.json()`.
+9. Generating current date and time using `new Date()`.
+10. Handling unknown routes using HTTP 404 status codes.
 
-![Node.js HTTP Server](screenshots/node-server.png)
+## 9. Problems Faced and Solutions
 
-### Express Home Route
+### Problem 1: PowerShell Execution Policy
 
-![Home Route](screenshots/home.png)
+NPM commands were blocked because PowerShell restricted script execution.
 
-### Express About Route
+**Solution:** Used `npm.cmd` instead of `npm` to execute NPM commands.
 
-![About Route](screenshots/about.png)
+### Problem 2: Port Already in Use
 
-### Express Time Route
+The server returned an EADDRINUSE error because another server was already running on port 3000.
 
-![Time Route](screenshots/time.png)
+**Solution:** Stopped the previously running server using `Ctrl + C` before starting another server.
 
-### Express 404 Error Handling
+## 10. Result
 
-![404 Route](screenshots/not-found.png)
+Successfully created and executed a Node.js HTTP server and an Express.js server.
 
-## 8. Important Concepts Learned
+Implemented the home, about, and time routes with appropriate HTTP status codes. Successfully tested all routes and implemented 404 error handling for unknown paths.
 
-- Creating a Node.js project using NPM.
-- Understanding package.json and node_modules.
-- Installing and using Express.js.
-- Creating an HTTP server using http.createServer().
-- Handling HTTP requests and responses.
-- Implementing GET routes using Express.
-- Returning JSON responses.
-- Generating current date and time using new Date().
-- Handling unknown routes using HTTP 404 status codes.
-- Understanding HTTP response status codes.
-
-## 9. Result
-
-Successfully created and executed a basic Node.js HTTP server and an Express.js web server.
-
-Implemented the home, about, and time routes with appropriate HTTP status codes. Also implemented 404 error handling for unknown routes and verified the outputs using a web browser.
-
-## 10. Author
+## 11. Author
 
 **Boddu Deekshith Reddy**
 
@@ -219,8 +234,8 @@ Section: CSE-AIDE (2A)
 
 Subject: Backend Development Fundamentals
 
-Lab: 01 - Node.js and Express Server
+Lab 01: Node.js and Express Server
 
 ---
 
-*Developed as part of the Backend Development Fundamentals laboratory.*
+*Backend Development Fundamentals – Laboratory Submission.*
